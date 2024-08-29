@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		F64641BA2C8064530056C7E8 /* placesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641B92C8064530056C7E8 /* placesApp.swift */; };
-		F64641BC2C8064530056C7E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641BB2C8064530056C7E8 /* ContentView.swift */; };
 		F64641BE2C8064550056C7E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64641BD2C8064540056C7E8 /* Assets.xcassets */; };
 		F64641C12C8064550056C7E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64641C02C8064550056C7E8 /* Preview Assets.xcassets */; };
 		F64641CB2C8064550056C7E8 /* placesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641CA2C8064550056C7E8 /* placesTests.swift */; };
 		F64641D52C8064550056C7E8 /* placesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641D42C8064550056C7E8 /* placesUITests.swift */; };
 		F64641D72C8064550056C7E8 /* placesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641D62C8064550056C7E8 /* placesUITestsLaunchTests.swift */; };
+		F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641EB2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift */; };
+		F64641EE2C8068820056C7E8 /* SearchPlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641ED2C8068820056C7E8 /* SearchPlacesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		F64641B62C8064530056C7E8 /* places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64641B92C8064530056C7E8 /* placesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesApp.swift; sourceTree = "<group>"; };
-		F64641BB2C8064530056C7E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F64641BD2C8064540056C7E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F64641C02C8064550056C7E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F64641C62C8064550056C7E8 /* placesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = placesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +44,8 @@
 		F64641D02C8064550056C7E8 /* placesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = placesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64641D42C8064550056C7E8 /* placesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesUITests.swift; sourceTree = "<group>"; };
 		F64641D62C8064550056C7E8 /* placesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F64641EB2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesModuleBuilder.swift; sourceTree = SOURCE_ROOT; };
+		F64641ED2C8068820056C7E8 /* SearchPlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,8 @@
 		F64641B82C8064530056C7E8 /* places */ = {
 			isa = PBXGroup;
 			children = (
+				F64641E32C8067170056C7E8 /* Modules */,
 				F64641B92C8064530056C7E8 /* placesApp.swift */,
-				F64641BB2C8064530056C7E8 /* ContentView.swift */,
 				F64641BD2C8064540056C7E8 /* Assets.xcassets */,
 				F64641BF2C8064550056C7E8 /* Preview Content */,
 			);
@@ -125,6 +127,71 @@
 				F64641D62C8064550056C7E8 /* placesUITestsLaunchTests.swift */,
 			);
 			path = placesUITests;
+			sourceTree = "<group>";
+		};
+		F64641E32C8067170056C7E8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				F64641E42C8067200056C7E8 /* SearchPlaces */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		F64641E42C8067200056C7E8 /* SearchPlaces */ = {
+			isa = PBXGroup;
+			children = (
+				F64641EA2C8067E70056C7E8 /* Builder */,
+				F64641E92C8067750056C7E8 /* Service */,
+				F64641E82C8067560056C7E8 /* Router */,
+				F64641E72C80674B0056C7E8 /* Interactor */,
+				F64641E62C8067460056C7E8 /* Presenter */,
+				F64641E52C8067410056C7E8 /* View */,
+			);
+			path = SearchPlaces;
+			sourceTree = "<group>";
+		};
+		F64641E52C8067410056C7E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F64641ED2C8068820056C7E8 /* SearchPlacesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F64641E62C8067460056C7E8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F64641E72C80674B0056C7E8 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F64641E82C8067560056C7E8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F64641E92C8067750056C7E8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F64641EA2C8067E70056C7E8 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				F64641EB2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +324,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F64641BC2C8064530056C7E8 /* ContentView.swift in Sources */,
+				F64641EE2C8068820056C7E8 /* SearchPlacesView.swift in Sources */,
 				F64641BA2C8064530056C7E8 /* placesApp.swift in Sources */,
+				F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
