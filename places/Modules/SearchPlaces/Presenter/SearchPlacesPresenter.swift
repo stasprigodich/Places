@@ -24,9 +24,11 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
     @Published var searchQuery: String = ""
     
     private let interactor: SearchPlacesInteractorProtocol
+    private let router: SearchPlacesRouterProtocol
 
-    init(interactor: SearchPlacesInteractorProtocol) {
+    init(interactor: SearchPlacesInteractorProtocol, router: SearchPlacesRouterProtocol) {
         self.interactor = interactor
+        self.router = router
     }
 
     var filteredLocations: [LocationViewModel] {
@@ -52,7 +54,7 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
     }
     
     func openWikipediaApp(with coordinate: Coordinate) {
-
+        router.routeToWikipedia(with: coordinate)
     }
     
     func openWikipediaApp(with query: String) {

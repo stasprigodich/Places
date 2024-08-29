@@ -6,11 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SearchPlacesRouterProtocol {
+    func routeToWikipedia(with coordinate: Coordinate)
 }
 
 class SearchPlacesRouter: SearchPlacesRouterProtocol {
-
+    
+    func routeToWikipedia(with coordinate: Coordinate) {
+        let urlString = "wikipedia://places?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)"
+        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        } else {
+            print("Cannot open Wikipedia app.")
+        }
+    }
 }
 

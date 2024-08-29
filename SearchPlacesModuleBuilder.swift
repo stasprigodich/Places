@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SearchPlacesModuleBuilder {
+
     @MainActor static func build() -> some View {
-        let networkService = NetworkService()
-        let service = SearchPlacesNetworkService(networkService: networkService)
-        let interactor = SearchPlacesInteractor(service: service)
-        let presenter = SearchPlacesPresenter(interactor: interactor)
+        let presenter = SearchPlacesPresenter(
+            interactor: DI.searchPlaces.searchPlacesInteractorProtocol,
+            router: DI.searchPlaces.searchPlacesRouterProtocol
+        )
         return SearchPlacesView(presenter: presenter)
     }
 }
