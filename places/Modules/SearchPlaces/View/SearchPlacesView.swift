@@ -36,7 +36,10 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
 
 struct SearchPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        let presenter = SearchPlacesPresenter()
+        let networkService = NetworkService()
+        let service = SearchPlacesNetworkService(networkService: networkService)
+        let interactor = SearchPlacesInteractor(service: service)
+        let presenter = SearchPlacesPresenter(interactor: interactor)
         return SearchPlacesView(presenter: presenter)
     }
 }

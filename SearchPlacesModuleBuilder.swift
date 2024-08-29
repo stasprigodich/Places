@@ -9,7 +9,10 @@ import SwiftUI
 
 struct SearchPlacesModuleBuilder {
     @MainActor static func build() -> some View {
-        let presenter = SearchPlacesPresenter()
+        let networkService = NetworkService()
+        let service = SearchPlacesNetworkService(networkService: networkService)
+        let interactor = SearchPlacesInteractor(service: service)
+        let presenter = SearchPlacesPresenter(interactor: interactor)
         return SearchPlacesView(presenter: presenter)
     }
 }

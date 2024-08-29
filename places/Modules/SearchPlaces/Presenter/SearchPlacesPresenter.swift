@@ -9,6 +9,7 @@ import SwiftUI
 
 @MainActor
 protocol SearchPlacesPresenterProtocol: ObservableObject {
+    var locations: [Location] { get }
     var searchQuery: String { get set }
     var filteredLocations: [LocationViewModel] { get }
     
@@ -19,15 +20,35 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
 
 @MainActor
 class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
+    @Published private(set) var locations: [Location] = []
     @Published var searchQuery: String = ""
-    @Published private(set) var filteredLocations: [LocationViewModel] = []
     
-    private let mockLocations: [Location] = [
-        .init(name: "Amsterdam", coordinate: .init(latitude: 21.0, longitude: 23.0))
-    ]
+    private let interactor: SearchPlacesInteractorProtocol
+
+    init(interactor: SearchPlacesInteractorProtocol) {
+        self.interactor = interactor
+    }
+
+    var filteredLocations: [LocationViewModel] {
+        if searchQuery.isEmpty {
+            return locations.map { .init(with: $0) }
+        } else {
+            return locations.filter { location in
+                if let name = location.name {
+                    return name.localizedCaseInsensitiveContains(searchQuery)
+                }
+                return false
+            }
+            .map { .init(with: $0) }
+        }
+    }
     
     func loadLocations() async {
-        filteredLocations = mockLocations.map { .init(with: $0) }
+        do {
+            locations = try await interactor.fetchLocations()
+        } catch {
+            print("Failed to load locations: \(error)")
+        }
     }
     
     func openWikipediaApp(with coordinate: Coordinate) {

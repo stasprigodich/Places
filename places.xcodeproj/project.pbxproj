@@ -23,6 +23,10 @@
 		F64641FD2C80821D0056C7E8 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641FC2C80821D0056C7E8 /* LocationViewModel.swift */; };
 		F64641FF2C80865E0056C7E8 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641FE2C80865E0056C7E8 /* Coordinate.swift */; };
 		F64642042C8089500056C7E8 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642032C8089500056C7E8 /* SearchTextField.swift */; };
+		F64642072C808F7A0056C7E8 /* SearchPlacesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642062C808F7A0056C7E8 /* SearchPlacesNetworkService.swift */; };
+		F646420A2C8090210056C7E8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642092C8090210056C7E8 /* NetworkService.swift */; };
+		F646420E2C8092CF0056C7E8 /* LocationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646420D2C8092CF0056C7E8 /* LocationDTO.swift */; };
+		F64642102C8095B90056C7E8 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646420F2C8095B90056C7E8 /* APIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,10 @@
 		F64641FC2C80821D0056C7E8 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		F64641FE2C80865E0056C7E8 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		F64642032C8089500056C7E8 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		F64642062C808F7A0056C7E8 /* SearchPlacesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesNetworkService.swift; sourceTree = "<group>"; };
+		F64642092C8090210056C7E8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F646420D2C8092CF0056C7E8 /* LocationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDTO.swift; sourceTree = "<group>"; };
+		F646420F2C8095B90056C7E8 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 		F64641B82C8064530056C7E8 /* places */ = {
 			isa = PBXGroup;
 			children = (
+				F64642082C8090150056C7E8 /* Network */,
 				F64642002C8089310056C7E8 /* Components */,
 				F64641E32C8067170056C7E8 /* Modules */,
 				F64641B92C8064530056C7E8 /* placesApp.swift */,
@@ -157,7 +166,7 @@
 		F64641E42C8067200056C7E8 /* SearchPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				F64641F82C807EF30056C7E8 /* Entity */,
+				F646420B2C8092A70056C7E8 /* Models */,
 				F64641EA2C8067E70056C7E8 /* Builder */,
 				F64641E92C8067750056C7E8 /* Service */,
 				F64641E82C8067560056C7E8 /* Router */,
@@ -205,6 +214,7 @@
 		F64641E92C8067750056C7E8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F64642062C808F7A0056C7E8 /* SearchPlacesNetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -240,6 +250,32 @@
 				F64642032C8089500056C7E8 /* SearchTextField.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F64642082C8090150056C7E8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F646420F2C8095B90056C7E8 /* APIConstants.swift */,
+				F64642092C8090210056C7E8 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F646420B2C8092A70056C7E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F646420C2C8092B40056C7E8 /* DTO */,
+				F64641F82C807EF30056C7E8 /* Entity */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F646420C2C8092B40056C7E8 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				F646420D2C8092CF0056C7E8 /* LocationDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64642072C808F7A0056C7E8 /* SearchPlacesNetworkService.swift in Sources */,
 				F64641F52C8079CD0056C7E8 /* SearchPlacesRouter.swift in Sources */,
 				F64642042C8089500056C7E8 /* SearchTextField.swift in Sources */,
 				F64641F12C80793F0056C7E8 /* SearchPlacesPresenter.swift in Sources */,
@@ -381,7 +418,10 @@
 				F64641F72C807D8A0056C7E8 /* SearchPlaceRowView.swift in Sources */,
 				F64641F32C8079970056C7E8 /* SearchPlacesInteractor.swift in Sources */,
 				F64641FD2C80821D0056C7E8 /* LocationViewModel.swift in Sources */,
+				F646420E2C8092CF0056C7E8 /* LocationDTO.swift in Sources */,
+				F64642102C8095B90056C7E8 /* APIConstants.swift in Sources */,
 				F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */,
+				F646420A2C8090210056C7E8 /* NetworkService.swift in Sources */,
 				F64641FF2C80865E0056C7E8 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

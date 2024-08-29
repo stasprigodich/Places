@@ -8,9 +8,19 @@
 import Foundation
 
 protocol SearchPlacesInteractorProtocol {
+    func fetchLocations() async throws -> [Location]
 }
 
 class SearchPlacesInteractor: SearchPlacesInteractorProtocol {
 
+    private let service: SearchPlacesNetworkServiceProtocol
+
+    init(service: SearchPlacesNetworkServiceProtocol) {
+        self.service = service
+    }
+
+    func fetchLocations() async throws -> [Location] {
+        return try await service.fetchLocations()
+    }
 }
 
