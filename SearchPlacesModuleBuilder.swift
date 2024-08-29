@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SearchPlacesModuleBuilder {
-    static func build() -> some View {
-        return SearchPlacesView()
+    @MainActor static func build() -> some View {
+        let presenter = SearchPlacesPresenter()
+        return SearchPlacesView(presenter: presenter)
     }
 }

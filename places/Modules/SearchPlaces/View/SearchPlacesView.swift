@@ -7,12 +7,36 @@
 
 import SwiftUI
 
-struct SearchPlacesView: View {
+struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
+    @ObservedObject var presenter: T
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                SearchTextField(text: $presenter.searchQuery) {
+                    presenter.openWikipediaApp(with: presenter.searchQuery)
+                }
+                .padding()
+
+                List(presenter.filteredLocations) { location in
+                    SearchPlaceRowView(location: location) {
+                        presenter.openWikipediaApp(with: location.coordinate)
+                    }
+                }
+            }
+            .navigationTitle("Places")
+            .onAppear {
+                Task {
+                    await presenter.loadLocations()
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    SearchPlacesView()
+struct SearchPlacesView_Previews: PreviewProvider {
+    static var previews: some View {
+        let presenter = SearchPlacesPresenter()
+        return SearchPlacesView(presenter: presenter)
+    }
 }
