@@ -9,7 +9,6 @@ import SwiftUI
 
 @MainActor
 protocol SearchPlacesPresenterProtocol: ObservableObject {
-    var locations: [LocationViewModel] { get }
     var searchQuery: String { get set }
     var filteredLocations: [LocationViewModel] { get }
     var isLoading: Bool { get }
@@ -22,12 +21,19 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
 }
 
 @MainActor
-class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
-    @Published private(set) var locations: [LocationViewModel] = []
-    @Published var searchQuery: String = ""
+class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
+    @Published var searchQuery: String = "" {
+        didSet {
+            updateFilteredLocations()
+        }
+    }
     @Published private(set) var isLoading: Bool = true
     @Published private(set) var errorMessage: String? = nil
     @Published var showWikipediaAppAlert: Bool = false
+    @Published private(set) var filteredLocations: [LocationViewModel] = []
+
+    private var locations: [LocationViewModel] = []
+    private var filterTask: Task<Void, Never>?
 
     private let interactor: SearchPlacesInteractorProtocol
     private let router: SearchPlacesRouterProtocol
@@ -36,26 +42,40 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
         self.interactor = interactor
         self.router = router
     }
-
-    var filteredLocations: [LocationViewModel] {
-        if searchQuery.isEmpty {
-            return locations
-        } else {
-            return locations.filter { location in
-                if let name = location.name {
-                    return name.lowercased().hasPrefix(searchQuery.lowercased())
-                }
-                return false
+    
+    private func updateFilteredLocations() {
+        filterTask?.cancel()
+        filterTask = Task {
+            let query = searchQuery.lowercased()
+            let filtered = await filterLocations(with: query)
+            if !Task.isCancelled {
+                filteredLocations = filtered
             }
         }
     }
-    
+
+    private func filterLocations(with query: String) async -> [LocationViewModel] {
+        let currentLocations = locations
+        return await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .userInitiated).async {
+                let filtered = currentLocations.filter { location in
+                    if let name = location.name {
+                        return name.lowercased().hasPrefix(query)
+                    }
+                    return false
+                }
+                continuation.resume(returning: filtered)
+            }
+        }
+    }
+
     func loadLocations() async {
         isLoading = true
         errorMessage = nil
         do {
             let models = try await interactor.fetchLocations()
             locations = models.map { .init(with: $0) }
+            updateFilteredLocations()
         } catch {
             errorMessage = "Failed to load locations"
         }
