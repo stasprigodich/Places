@@ -13,7 +13,7 @@ struct SearchPlaceRowView: View {
 
     var body: some View {
         Button(action: tapAction) {
-            Text(location.name ?? "")
+            Text(location.name)
         }
     }
 }
