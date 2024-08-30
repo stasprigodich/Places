@@ -31,6 +31,11 @@
 		F64642152C80A3DB0056C7E8 /* SearchPlacesDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642142C80A3DB0056C7E8 /* SearchPlacesDI.swift */; };
 		F64642182C80C6850056C7E8 /* NetworkDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642172C80C6850056C7E8 /* NetworkDI.swift */; };
 		F646421A2C81C62F0056C7E8 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642192C81C62F0056C7E8 /* ErrorStateView.swift */; };
+		F646421C2C8206810056C7E8 /* SearchPlacesResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646421B2C8206810056C7E8 /* SearchPlacesResultView.swift */; };
+		F646421E2C820BDE0056C7E8 /* SearchPlacesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646421D2C820BDE0056C7E8 /* SearchPlacesLoadingView.swift */; };
+		F64642202C820C2C0056C7E8 /* SearchPlacesErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646421F2C820C2C0056C7E8 /* SearchPlacesErrorView.swift */; };
+		F64642222C820D260056C7E8 /* SearchPlacesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642212C820D260056C7E8 /* SearchPlacesEmptyView.swift */; };
+		F64642242C820F0C0056C7E8 /* SearchPlaces+ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642232C820F0C0056C7E8 /* SearchPlaces+ViewState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +84,11 @@
 		F64642162C80C2010056C7E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F64642172C80C6850056C7E8 /* NetworkDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDI.swift; sourceTree = "<group>"; };
 		F64642192C81C62F0056C7E8 /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
+		F646421B2C8206810056C7E8 /* SearchPlacesResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesResultView.swift; sourceTree = "<group>"; };
+		F646421D2C820BDE0056C7E8 /* SearchPlacesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesLoadingView.swift; sourceTree = "<group>"; };
+		F646421F2C820C2C0056C7E8 /* SearchPlacesErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesErrorView.swift; sourceTree = "<group>"; };
+		F64642212C820D260056C7E8 /* SearchPlacesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesEmptyView.swift; sourceTree = "<group>"; };
+		F64642232C820F0C0056C7E8 /* SearchPlaces+ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchPlaces+ViewState.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,9 +201,9 @@
 		F64641E52C8067410056C7E8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F64642252C8217160056C7E8 /* Components */,
 				F64641FB2C8082070056C7E8 /* ViewModels */,
 				F64641ED2C8068820056C7E8 /* SearchPlacesView.swift */,
-				F64641F62C807D8A0056C7E8 /* SearchPlaceRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				F64641F02C80793F0056C7E8 /* SearchPlacesPresenter.swift */,
+				F64642232C820F0C0056C7E8 /* SearchPlaces+ViewState.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -298,6 +309,18 @@
 				F64642142C80A3DB0056C7E8 /* SearchPlacesDI.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		F64642252C8217160056C7E8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F64641F62C807D8A0056C7E8 /* SearchPlaceRowView.swift */,
+				F646421B2C8206810056C7E8 /* SearchPlacesResultView.swift */,
+				F646421D2C820BDE0056C7E8 /* SearchPlacesLoadingView.swift */,
+				F646421F2C820C2C0056C7E8 /* SearchPlacesErrorView.swift */,
+				F64642212C820D260056C7E8 /* SearchPlacesEmptyView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,11 +455,14 @@
 			files = (
 				F64642132C80A3870056C7E8 /* DI.swift in Sources */,
 				F64642072C808F7A0056C7E8 /* SearchPlacesNetworkService.swift in Sources */,
+				F64642222C820D260056C7E8 /* SearchPlacesEmptyView.swift in Sources */,
+				F646421E2C820BDE0056C7E8 /* SearchPlacesLoadingView.swift in Sources */,
 				F64641F52C8079CD0056C7E8 /* SearchPlacesRouter.swift in Sources */,
 				F64642042C8089500056C7E8 /* SearchTextField.swift in Sources */,
 				F64641F12C80793F0056C7E8 /* SearchPlacesPresenter.swift in Sources */,
 				F64641FA2C807EFC0056C7E8 /* Location.swift in Sources */,
 				F64641EE2C8068820056C7E8 /* SearchPlacesView.swift in Sources */,
+				F646421C2C8206810056C7E8 /* SearchPlacesResultView.swift in Sources */,
 				F64642182C80C6850056C7E8 /* NetworkDI.swift in Sources */,
 				F64641BA2C8064530056C7E8 /* placesApp.swift in Sources */,
 				F646421A2C81C62F0056C7E8 /* ErrorStateView.swift in Sources */,
@@ -445,7 +471,9 @@
 				F64641F32C8079970056C7E8 /* SearchPlacesInteractor.swift in Sources */,
 				F64641FD2C80821D0056C7E8 /* LocationViewModel.swift in Sources */,
 				F646420E2C8092CF0056C7E8 /* LocationDTO.swift in Sources */,
+				F64642202C820C2C0056C7E8 /* SearchPlacesErrorView.swift in Sources */,
 				F64642102C8095B90056C7E8 /* APIConstants.swift in Sources */,
+				F64642242C820F0C0056C7E8 /* SearchPlaces+ViewState.swift in Sources */,
 				F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */,
 				F646420A2C8090210056C7E8 /* NetworkService.swift in Sources */,
 				F64641FF2C80865E0056C7E8 /* Coordinate.swift in Sources */,
@@ -612,6 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"places/Preview Content\"";
+				DEVELOPMENT_TEAM = 42KT295QRB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = places/Info.plist;
@@ -643,6 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"places/Preview Content\"";
+				DEVELOPMENT_TEAM = 42KT295QRB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = places/Info.plist;
