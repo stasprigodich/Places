@@ -18,9 +18,38 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                 }
                 .padding()
 
-                List(presenter.filteredLocations) { location in
-                    SearchPlaceRowView(location: location) {
-                        presenter.openWikipediaApp(with: location.coordinate)
+                ZStack {
+                    Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all)
+
+                    if presenter.isLoading {
+                        VStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    } else if let errorMessage = presenter.errorMessage {
+                        VStack {
+                            Spacer()
+                            ErrorStateView(message: errorMessage) {
+                                Task {
+                                    await presenter.loadLocations()
+                                }
+                            }
+                            Spacer()
+                        }
+                    } else if presenter.filteredLocations.isEmpty {
+                        VStack {
+                            Spacer()
+                            ErrorStateView(message: "No locations found", retryAction: nil)
+                            Spacer()
+                        }
+                    } else {
+                        List(presenter.filteredLocations) { location in
+                            SearchPlaceRowView(location: location) {
+                                presenter.openWikipediaApp(with: location.coordinate)
+                            }
+                            .listRowBackground(Color(UIColor.white))
+                        }
                     }
                 }
             }

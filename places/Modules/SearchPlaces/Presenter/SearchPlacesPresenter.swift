@@ -12,6 +12,8 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
     var locations: [Location] { get }
     var searchQuery: String { get set }
     var filteredLocations: [LocationViewModel] { get }
+    var isLoading: Bool { get }
+    var errorMessage: String? { get }
     
     func loadLocations() async
     func openWikipediaApp(with coordinate: Coordinate)
@@ -22,6 +24,8 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
 class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
     @Published private(set) var locations: [Location] = []
     @Published var searchQuery: String = ""
+    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var errorMessage: String? = nil
     
     private let interactor: SearchPlacesInteractorProtocol
     private let router: SearchPlacesRouterProtocol
@@ -37,7 +41,7 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
         } else {
             return locations.filter { location in
                 if let name = location.name {
-                    return name.localizedCaseInsensitiveContains(searchQuery)
+                    return name.lowercased().hasPrefix(searchQuery.lowercased())
                 }
                 return false
             }
@@ -46,11 +50,14 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
     }
     
     func loadLocations() async {
+        isLoading = true
+        errorMessage = nil
         do {
             locations = try await interactor.fetchLocations()
         } catch {
-            print("Failed to load locations: \(error)")
+            errorMessage = "Failed to load locations"
         }
+        isLoading = false
     }
     
     func openWikipediaApp(with coordinate: Coordinate) {
