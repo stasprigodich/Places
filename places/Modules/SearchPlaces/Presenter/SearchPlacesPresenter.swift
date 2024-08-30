@@ -14,6 +14,7 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
     var filteredLocations: [LocationViewModel] { get }
     var isLoading: Bool { get }
     var errorMessage: String? { get }
+    var showWikipediaAppAlert: Bool { get set }
     
     func loadLocations() async
     func openWikipediaApp(with coordinate: Coordinate)
@@ -24,9 +25,10 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
 class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
     @Published private(set) var locations: [Location] = []
     @Published var searchQuery: String = ""
-    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var isLoading: Bool = true
     @Published private(set) var errorMessage: String? = nil
-    
+    @Published var showWikipediaAppAlert: Bool = false
+
     private let interactor: SearchPlacesInteractorProtocol
     private let router: SearchPlacesRouterProtocol
 
@@ -61,7 +63,9 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
     }
     
     func openWikipediaApp(with coordinate: Coordinate) {
-        router.routeToWikipedia(with: coordinate)
+        if !router.routeToWikipedia(with: coordinate) {
+            showWikipediaAppAlert = true
+        }
     }
     
     func openWikipediaApp(with query: String) {

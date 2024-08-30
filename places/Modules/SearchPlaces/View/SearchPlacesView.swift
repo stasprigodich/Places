@@ -54,6 +54,13 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                 }
             }
             .navigationTitle("Places")
+            .alert(isPresented: $presenter.showWikipediaAppAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Wikipedia app is not installed."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
             .onAppear {
                 Task {
                     await presenter.loadLocations()
