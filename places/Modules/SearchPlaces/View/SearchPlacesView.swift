@@ -48,12 +48,13 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                             SearchPlaceRowView(location: location) {
                                 presenter.openWikipediaApp(with: location.coordinate)
                             }
-                            .listRowBackground(Color(UIColor.white))
+                            .listRowBackground(Color.white)
                         }
                     }
                 }
             }
             .navigationTitle("Places")
+            .background(Color.purple)
             .alert(isPresented: $presenter.showWikipediaAppAlert) {
                 Alert(
                     title: Text("Error"),
