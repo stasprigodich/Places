@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 protocol SearchPlacesPresenterProtocol: ObservableObject {
-    var locations: [Location] { get }
+    var locations: [LocationViewModel] { get }
     var searchQuery: String { get set }
     var filteredLocations: [LocationViewModel] { get }
     var isLoading: Bool { get }
@@ -23,7 +23,7 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
 
 @MainActor
 class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
-    @Published private(set) var locations: [Location] = []
+    @Published private(set) var locations: [LocationViewModel] = []
     @Published var searchQuery: String = ""
     @Published private(set) var isLoading: Bool = true
     @Published private(set) var errorMessage: String? = nil
@@ -39,7 +39,7 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
 
     var filteredLocations: [LocationViewModel] {
         if searchQuery.isEmpty {
-            return locations.map { .init(with: $0) }
+            return locations
         } else {
             return locations.filter { location in
                 if let name = location.name {
@@ -47,7 +47,6 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
                 }
                 return false
             }
-            .map { .init(with: $0) }
         }
     }
     
@@ -55,7 +54,8 @@ class SearchPlacesPresenter: ObservableObject, SearchPlacesPresenterProtocol {
         isLoading = true
         errorMessage = nil
         do {
-            locations = try await interactor.fetchLocations()
+            let models = try await interactor.fetchLocations()
+            locations = models.map { .init(with: $0) }
         } catch {
             errorMessage = "Failed to load locations"
         }
