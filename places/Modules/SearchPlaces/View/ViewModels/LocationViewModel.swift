@@ -9,14 +9,14 @@ import Foundation
 
 struct LocationViewModel: Identifiable {
     var id = UUID()
-    let name: String?
+    let name: String
     let coordinate: Coordinate
 }
 
 extension LocationViewModel {
     
     init(with location: Location) {
-        name = location.name
+        name = location.name ?? "Place at (\(location.coordinate.latitude), \(location.coordinate.longitude))"
         coordinate = location.coordinate
     }
 }

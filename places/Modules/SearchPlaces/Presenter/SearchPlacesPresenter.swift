@@ -61,10 +61,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
         return await withCheckedContinuation { continuation in
             DispatchQueue.global(qos: .userInitiated).async {
                 let filtered = currentLocations.filter { location in
-                    if let name = location.name {
-                        return name.lowercased().hasPrefix(query)
-                    }
-                    return false
+                    return location.name.lowercased().hasPrefix(query)
                 }
                 continuation.resume(returning: filtered)
             }
@@ -90,6 +87,9 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     
     func openWikipediaApp(with query: String) {
         guard !query.isEmpty else { return }
+        if !router.routeToWikipedia(with: query) {
+            showWikipediaAppAlert = true
+        }
     }
 }
 

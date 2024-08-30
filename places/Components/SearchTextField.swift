@@ -10,7 +10,7 @@ import Combine
 
 struct SearchTextField: View {
     @Binding var text: String
-    var onSubmit: () -> Void
+    var onSubmit: (String) -> Void
     
     @State private var debounceTimer: AnyCancellable?
     @State private var debouncedText: String = ""
@@ -18,12 +18,13 @@ struct SearchTextField: View {
     var body: some View {
         TextField("Search...", text: $debouncedText)
             .autocorrectionDisabled()
+            .submitLabel(.search)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .onChange(of: debouncedText) { newValue in
                 debounceTextInput(newValue)
             }
             .onSubmit {
-                onSubmit()
+                onSubmit(debouncedText)
             }
     }
     
@@ -33,13 +34,12 @@ struct SearchTextField: View {
             .delay(for: .milliseconds(300), scheduler: RunLoop.main)
             .sink { _ in
                 text = newValue
-                onSubmit()
             }
     }
 }
 
 struct SearchTextField_Previews: PreviewProvider {
     static var previews: some View {
-        SearchTextField(text: .constant("")) { }
+        SearchTextField(text: .constant("")) { _ in }
     }
 }

@@ -13,8 +13,8 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                SearchTextField(text: $presenter.searchQuery) {
-                    presenter.openWikipediaApp(with: presenter.searchQuery)
+                SearchTextField(text: $presenter.searchQuery) { query in
+                    presenter.openWikipediaApp(with: query)
                 }
                 .padding()
 
