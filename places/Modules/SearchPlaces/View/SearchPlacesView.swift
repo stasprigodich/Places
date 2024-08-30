@@ -12,7 +12,7 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
 
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
                 SearchTextField(text: $presenter.searchQuery) {
                     presenter.openWikipediaApp(with: presenter.searchQuery)
                 }
@@ -20,35 +20,21 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
 
                 ZStack {
                     Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all)
-
-                    if presenter.isLoading {
-                        VStack {
-                            Spacer()
-                            ProgressView()
-                            Spacer()
-                        }
-                    } else if let errorMessage = presenter.errorMessage {
-                        VStack {
-                            Spacer()
-                            ErrorStateView(message: errorMessage) {
-                                Task {
-                                    await presenter.loadLocations()
-                                }
+                    
+                    switch presenter.viewState {
+                    case .loading:
+                        SearchPlacesLoadingView()
+                    case .error(let message):
+                        SearchPlacesErrorView(message: message) {
+                            Task {
+                                await presenter.loadLocations()
                             }
-                            Spacer()
                         }
-                    } else if presenter.filteredLocations.isEmpty {
-                        VStack {
-                            Spacer()
-                            ErrorStateView(message: "No locations found", retryAction: nil)
-                            Spacer()
-                        }
-                    } else {
-                        List(presenter.filteredLocations) { location in
-                            SearchPlaceRowView(location: location) {
-                                presenter.openWikipediaApp(with: location.coordinate)
-                            }
-                            .listRowBackground(Color.white)
+                    case .empty:
+                        SearchPlacesEmptyView()
+                    case .results(let locations):
+                        SearchPlacesResultView(locations: locations) { coordinate in
+                            presenter.openWikipediaApp(with: coordinate)
                         }
                     }
                 }

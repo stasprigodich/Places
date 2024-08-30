@@ -7,12 +7,12 @@
 
 import SwiftUI
 
+typealias ViewState = SearchPlacesViewState
+
 @MainActor
 protocol SearchPlacesPresenterProtocol: ObservableObject {
     var searchQuery: String { get set }
-    var filteredLocations: [LocationViewModel] { get }
-    var isLoading: Bool { get }
-    var errorMessage: String? { get }
+    var viewState: ViewState { get }
     var showWikipediaAppAlert: Bool { get set }
     
     func loadLocations() async
@@ -27,10 +27,8 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
             updateFilteredLocations()
         }
     }
-    @Published private(set) var isLoading: Bool = true
-    @Published private(set) var errorMessage: String? = nil
+    @Published private(set) var viewState: ViewState = .loading
     @Published var showWikipediaAppAlert: Bool = false
-    @Published private(set) var filteredLocations: [LocationViewModel] = []
 
     private var locations: [LocationViewModel] = []
     private var filterTask: Task<Void, Never>?
@@ -49,7 +47,11 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
             let query = searchQuery.lowercased()
             let filtered = await filterLocations(with: query)
             if !Task.isCancelled {
-                filteredLocations = filtered
+                if filtered.isEmpty {
+                    viewState = .empty
+                } else {
+                    viewState = .results(filtered)
+                }
             }
         }
     }
@@ -70,16 +72,14 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     }
 
     func loadLocations() async {
-        isLoading = true
-        errorMessage = nil
+        viewState = .loading
         do {
             let models = try await interactor.fetchLocations()
             locations = models.map { .init(with: $0) }
             updateFilteredLocations()
         } catch {
-            errorMessage = "Failed to load locations"
+            viewState = .error("Failed to load locations")
         }
-        isLoading = false
     }
     
     func openWikipediaApp(with coordinate: Coordinate) {
