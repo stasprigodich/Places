@@ -19,7 +19,7 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                 .padding()
 
                 ZStack {
-                    Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all)
+                    Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all)
                     
                     switch presenter.viewState {
                     case .loading:
@@ -40,7 +40,7 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                 }
             }
             .navigationTitle("Places")
-            .background(Color.purple)
+            .background(Color(.secondarySystemGroupedBackground))
             .alert(isPresented: $presenter.showWikipediaAppAlert) {
                 Alert(
                     title: Text("Error"),

@@ -16,7 +16,7 @@ struct SearchPlacesResultView: View {
             SearchPlaceRowView(location: location) {
                 onSelectLocation(location.coordinate)
             }
-            .listRowBackground(Color.white)
+            .listRowBackground(Color(.secondarySystemGroupedBackground))
         }
     }
 }
