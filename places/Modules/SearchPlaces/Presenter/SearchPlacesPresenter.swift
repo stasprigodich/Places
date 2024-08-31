@@ -25,7 +25,9 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     @Published var searchQuery: String = "" {
         didSet {
             if !locations.isEmpty {
-                updateFilteredLocations()
+                Task {
+                    await updateFilteredLocations()
+                }
             }
         }
     }
@@ -47,7 +49,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
         self.router = router
     }
     
-    private func updateFilteredLocations() {
+    private func updateFilteredLocations() async {
         if case .error = viewState { return }
         filterTask?.cancel()
         filterTask = Task {
@@ -61,6 +63,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
                 }
             }
         }
+        await filterTask?.value
     }
 
     private func filterLocations(with query: String) async -> [LocationViewModel] {
@@ -78,13 +81,16 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     func loadLocations() async {
         accessibilityAnnounceScreenChange()
         viewState = .loading
-        do {
-            let models = try await interactor.fetchLocations()
-            locations = models.map { .init(with: $0) }
-            updateFilteredLocations()
-        } catch {
-            viewState = .error(Strings.SearchPlaces.errorMessage)
+        let task = Task {
+            do {
+                let models = try await interactor.fetchLocations()
+                locations = models.map { .init(with: $0) }
+                await updateFilteredLocations()
+            } catch {
+                viewState = .error(Strings.SearchPlaces.errorMessage)
+            }
         }
+        await task.value
     }
     
     func openWikipediaApp(with coordinate: Coordinate) {

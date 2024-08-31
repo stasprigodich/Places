@@ -10,7 +10,6 @@
 		F64641BA2C8064530056C7E8 /* placesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641B92C8064530056C7E8 /* placesApp.swift */; };
 		F64641BE2C8064550056C7E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64641BD2C8064540056C7E8 /* Assets.xcassets */; };
 		F64641C12C8064550056C7E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64641C02C8064550056C7E8 /* Preview Assets.xcassets */; };
-		F64641CB2C8064550056C7E8 /* placesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641CA2C8064550056C7E8 /* placesTests.swift */; };
 		F64641D52C8064550056C7E8 /* placesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641D42C8064550056C7E8 /* placesUITests.swift */; };
 		F64641D72C8064550056C7E8 /* placesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641D62C8064550056C7E8 /* placesUITestsLaunchTests.swift */; };
 		F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641EB2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift */; };
@@ -39,6 +38,14 @@
 		F64642272C8325010056C7E8 /* WikipediaAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642262C8325010056C7E8 /* WikipediaAppAlert.swift */; };
 		F646422A2C8353F70056C7E8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F64642292C8353F70056C7E8 /* Localizable.xcstrings */; };
 		F646422F2C8359E70056C7E8 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646422E2C8359E70056C7E8 /* LocalizedStrings.swift */; };
+		F64642322C836A290056C7E8 /* SearchPlacesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642312C836A290056C7E8 /* SearchPlacesPresenterTests.swift */; };
+		F64642352C836A5E0056C7E8 /* MockSearchPlacesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642342C836A5E0056C7E8 /* MockSearchPlacesInteractor.swift */; };
+		F64642372C837A140056C7E8 /* SearchPlacesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642362C837A140056C7E8 /* SearchPlacesInteractorTests.swift */; };
+		F64642392C837B010056C7E8 /* SearchPlacesRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642382C837B010056C7E8 /* SearchPlacesRouterTests.swift */; };
+		F646423B2C837D080056C7E8 /* SearchPlacesNetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646423A2C837D080056C7E8 /* SearchPlacesNetworkServiceTests.swift */; };
+		F646423D2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646423C2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift */; };
+		F646423F2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646423E2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift */; };
+		F64642412C83AF460056C7E8 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642402C83AF460056C7E8 /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +71,6 @@
 		F64641BD2C8064540056C7E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F64641C02C8064550056C7E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F64641C62C8064550056C7E8 /* placesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = placesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F64641CA2C8064550056C7E8 /* placesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesTests.swift; sourceTree = "<group>"; };
 		F64641D02C8064550056C7E8 /* placesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = placesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64641D42C8064550056C7E8 /* placesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesUITests.swift; sourceTree = "<group>"; };
 		F64641D62C8064550056C7E8 /* placesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -95,6 +101,14 @@
 		F64642262C8325010056C7E8 /* WikipediaAppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaAppAlert.swift; sourceTree = "<group>"; };
 		F64642292C8353F70056C7E8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F646422E2C8359E70056C7E8 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
+		F64642312C836A290056C7E8 /* SearchPlacesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesPresenterTests.swift; sourceTree = "<group>"; };
+		F64642342C836A5E0056C7E8 /* MockSearchPlacesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPlacesInteractor.swift; sourceTree = "<group>"; };
+		F64642362C837A140056C7E8 /* SearchPlacesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesInteractorTests.swift; sourceTree = "<group>"; };
+		F64642382C837B010056C7E8 /* SearchPlacesRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesRouterTests.swift; sourceTree = "<group>"; };
+		F646423A2C837D080056C7E8 /* SearchPlacesNetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesNetworkServiceTests.swift; sourceTree = "<group>"; };
+		F646423C2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPlacesRouter.swift; sourceTree = "<group>"; };
+		F646423E2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPlacesNetworkService.swift; sourceTree = "<group>"; };
+		F64642402C83AF460056C7E8 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +183,7 @@
 		F64641C92C8064550056C7E8 /* placesTests */ = {
 			isa = PBXGroup;
 			children = (
-				F64641CA2C8064550056C7E8 /* placesTests.swift */,
+				F64642302C836A070056C7E8 /* SearchPlaces */,
 			);
 			path = placesTests;
 			sourceTree = "<group>";
@@ -340,6 +354,29 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F64642302C836A070056C7E8 /* SearchPlaces */ = {
+			isa = PBXGroup;
+			children = (
+				F64642332C836A390056C7E8 /* Mocks */,
+				F64642312C836A290056C7E8 /* SearchPlacesPresenterTests.swift */,
+				F64642362C837A140056C7E8 /* SearchPlacesInteractorTests.swift */,
+				F64642382C837B010056C7E8 /* SearchPlacesRouterTests.swift */,
+				F646423A2C837D080056C7E8 /* SearchPlacesNetworkServiceTests.swift */,
+			);
+			path = SearchPlaces;
+			sourceTree = "<group>";
+		};
+		F64642332C836A390056C7E8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F64642342C836A5E0056C7E8 /* MockSearchPlacesInteractor.swift */,
+				F646423C2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift */,
+				F646423E2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift */,
+				F64642402C83AF460056C7E8 /* MockNetworkService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -505,7 +542,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F64641CB2C8064550056C7E8 /* placesTests.swift in Sources */,
+				F64642372C837A140056C7E8 /* SearchPlacesInteractorTests.swift in Sources */,
+				F646423D2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift in Sources */,
+				F646423F2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift in Sources */,
+				F64642392C837B010056C7E8 /* SearchPlacesRouterTests.swift in Sources */,
+				F64642322C836A290056C7E8 /* SearchPlacesPresenterTests.swift in Sources */,
+				F64642412C83AF460056C7E8 /* MockNetworkService.swift in Sources */,
+				F646423B2C837D080056C7E8 /* SearchPlacesNetworkServiceTests.swift in Sources */,
+				F64642352C836A5E0056C7E8 /* MockSearchPlacesInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

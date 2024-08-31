@@ -5,11 +5,11 @@
 //  Created by Stan Prigodich on 29/08/2024.
 //
 
-struct LocationsResponseDTO: Decodable {
+struct LocationsResponseDTO: Codable {
     let locations: [LocationDTO]
 }
 
-struct LocationDTO: Decodable {
+struct LocationDTO: Codable {
     let name: String?
     let lat: Double
     let long: Double
