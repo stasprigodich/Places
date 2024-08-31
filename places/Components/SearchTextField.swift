@@ -16,7 +16,7 @@ struct SearchTextField: View {
     @State private var debouncedText: String = ""
 
     var body: some View {
-        TextField("Search...", text: $debouncedText)
+        TextField(Strings.SearchTextField.placeholder, text: $debouncedText)
             .autocorrectionDisabled()
             .submitLabel(.search)
             .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -27,8 +27,8 @@ struct SearchTextField: View {
                 onSubmit(debouncedText)
             }
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("Search for places")
-            .accessibilityHint("Double-tap to enter search query")
+            .accessibilityLabel(Strings.SearchTextField.accessibilityLabel)
+            .accessibilityHint(Strings.SearchTextField.accessibilityHint)
             .accessibilityAddTraits(.isSearchField)
     }
     

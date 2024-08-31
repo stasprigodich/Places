@@ -20,7 +20,7 @@ struct LocationViewModel: Identifiable, Equatable {
 extension LocationViewModel {
     
     init(with location: Location) {
-        name = location.name ?? "Place at (\(location.coordinate.latitude), \(location.coordinate.longitude))"
+        name = location.name ?? String(format: Strings.SearchPlaces.defaultPlaceName, location.coordinate.latitude, location.coordinate.longitude)
         coordinate = location.coordinate
     }
 }

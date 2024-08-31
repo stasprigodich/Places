@@ -8,6 +8,6 @@
 enum SearchPlacesViewState: Equatable {
     case loading
     case error(String)
-    case empty
+    case empty(String)
     case results([LocationViewModel])
 }

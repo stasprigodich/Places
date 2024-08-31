@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct SearchPlacesEmptyView: View {
+    let message: String
     var body: some View {
         VStack {
             Spacer()
-            ErrorStateView(message: "No places found", retryAction: nil)
+            ErrorStateView(message: message, retryAction: nil)
             Spacer()
         }
     }

@@ -21,7 +21,6 @@ class SearchPlacesRouter: SearchPlacesRouterProtocol {
             UIApplication.shared.open(url)
             return true
         } else {
-            print("Cannot open Wikipedia app.")
             return false
         }
     }
@@ -33,7 +32,6 @@ class SearchPlacesRouter: SearchPlacesRouterProtocol {
             UIApplication.shared.open(url)
             return true
         } else {
-            print("Cannot open Wikipedia app.")
             return false
         }
     }

@@ -37,6 +37,8 @@
 		F64642222C820D260056C7E8 /* SearchPlacesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642212C820D260056C7E8 /* SearchPlacesEmptyView.swift */; };
 		F64642242C820F0C0056C7E8 /* SearchPlaces+ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642232C820F0C0056C7E8 /* SearchPlaces+ViewState.swift */; };
 		F64642272C8325010056C7E8 /* WikipediaAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642262C8325010056C7E8 /* WikipediaAppAlert.swift */; };
+		F646422A2C8353F70056C7E8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F64642292C8353F70056C7E8 /* Localizable.xcstrings */; };
+		F646422F2C8359E70056C7E8 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646422E2C8359E70056C7E8 /* LocalizedStrings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		F64642212C820D260056C7E8 /* SearchPlacesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesEmptyView.swift; sourceTree = "<group>"; };
 		F64642232C820F0C0056C7E8 /* SearchPlaces+ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchPlaces+ViewState.swift"; sourceTree = "<group>"; };
 		F64642262C8325010056C7E8 /* WikipediaAppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaAppAlert.swift; sourceTree = "<group>"; };
+		F64642292C8353F70056C7E8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F646422E2C8359E70056C7E8 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 				F64642112C80A36D0056C7E8 /* DI */,
 				F64641E32C8067170056C7E8 /* Modules */,
 				F64642082C8090150056C7E8 /* Network */,
+				F64642282C8353D70056C7E8 /* Resources */,
 				F64641B92C8064530056C7E8 /* placesApp.swift */,
 				F64641BD2C8064540056C7E8 /* Assets.xcassets */,
 				F64641BF2C8064550056C7E8 /* Preview Content */,
@@ -326,6 +331,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		F64642282C8353D70056C7E8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F64642292C8353F70056C7E8 /* Localizable.xcstrings */,
+				F646422E2C8359E70056C7E8 /* LocalizedStrings.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -412,6 +426,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = F64641AD2C8064530056C7E8;
 			productRefGroup = F64641B72C8064530056C7E8 /* Products */;
@@ -432,6 +447,7 @@
 			files = (
 				F64641C12C8064550056C7E8 /* Preview Assets.xcassets in Resources */,
 				F64641BE2C8064550056C7E8 /* Assets.xcassets in Resources */,
+				F646422A2C8353F70056C7E8 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +494,7 @@
 				F64642202C820C2C0056C7E8 /* SearchPlacesErrorView.swift in Sources */,
 				F64642102C8095B90056C7E8 /* APIConstants.swift in Sources */,
 				F64642242C820F0C0056C7E8 /* SearchPlaces+ViewState.swift in Sources */,
+				F646422F2C8359E70056C7E8 /* LocalizedStrings.swift in Sources */,
 				F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */,
 				F646420A2C8090210056C7E8 /* NetworkService.swift in Sources */,
 				F64641FF2C80865E0056C7E8 /* Coordinate.swift in Sources */,

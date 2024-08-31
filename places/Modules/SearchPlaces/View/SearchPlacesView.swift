@@ -16,7 +16,7 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                 searchField
                 mainContent
             }
-            .navigationTitle("Places")
+            .navigationTitle(Strings.SearchPlaces.title)
             .background(Color(.secondarySystemGroupedBackground))
             .alert(isPresented: $presenter.showWikipediaAppAlert) {
                 WikipediaAppAlert.build()
@@ -50,8 +50,8 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                         await presenter.loadLocations()
                     }
                 }
-            case .empty:
-                SearchPlacesEmptyView()
+            case .empty(let message):
+                SearchPlacesEmptyView(message: message)
             case .results(let locations):
                 SearchPlacesResultView(locations: locations) { coordinate in
                     presenter.openWikipediaApp(with: coordinate)

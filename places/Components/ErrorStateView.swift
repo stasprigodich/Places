@@ -18,7 +18,7 @@ struct ErrorStateView: View {
                 .padding()
             
             if let retryAction = retryAction {
-                Button("Retry") {
+                Button(Strings.ErrorStateView.retryButton) {
                     retryAction()
                 }
                 .padding()

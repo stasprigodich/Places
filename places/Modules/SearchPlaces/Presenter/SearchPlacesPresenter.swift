@@ -55,7 +55,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
             let filtered = await filterLocations(with: query)
             if !Task.isCancelled {
                 if filtered.isEmpty {
-                    viewState = .empty
+                    viewState = .empty(Strings.SearchPlaces.emptyMessage)
                 } else {
                     viewState = .results(filtered)
                 }
@@ -83,7 +83,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
             locations = models.map { .init(with: $0) }
             updateFilteredLocations()
         } catch {
-            viewState = .error("Failed to load places")
+            viewState = .error(Strings.SearchPlaces.errorMessage)
         }
     }
     
@@ -105,13 +105,13 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
 
         switch newState {
         case .loading:
-            UIAccessibility.post(notification: .announcement, argument: "Loading places.")
+            UIAccessibility.post(notification: .announcement, argument: Strings.SearchPlaces.accessibilityLoading)
         case .error(_):
-            UIAccessibility.post(notification: .announcement, argument: "Failed to load places.")
+            UIAccessibility.post(notification: .announcement, argument: Strings.SearchPlaces.accessibilityError)
         case .empty:
-            UIAccessibility.post(notification: .announcement, argument: "No places found.")
+            UIAccessibility.post(notification: .announcement, argument: Strings.SearchPlaces.accessibilityEmpty)
         case .results(let locations):
-            UIAccessibility.post(notification: .announcement, argument: "\(locations.count) places found.")
+            UIAccessibility.post(notification: .announcement, argument: String(format: Strings.SearchPlaces.accessibilityResult, locations.count))
         }
     }
 
