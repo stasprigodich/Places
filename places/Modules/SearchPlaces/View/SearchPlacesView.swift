@@ -27,6 +27,7 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private var searchField: some View {
