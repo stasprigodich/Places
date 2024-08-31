@@ -27,6 +27,7 @@ struct SearchTextField: View {
                 onSubmit(debouncedText)
             }
             .accessibilityElement(children: .ignore)
+            .accessibilityIdentifier(AccessibilityIdentifiers.SearchTextField.view)
             .accessibilityLabel(Strings.SearchTextField.accessibilityLabel)
             .accessibilityHint(Strings.SearchTextField.accessibilityHint)
             .accessibilityAddTraits(.isSearchField)

@@ -20,6 +20,7 @@ struct SearchPlacesResultView: View {
             }
             .listRowBackground(Color(.secondarySystemGroupedBackground))
         }
+        .accessibilityIdentifier(AccessibilityIdentifiers.SearchPlaces.list)
     }
 }
 

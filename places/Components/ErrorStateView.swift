@@ -24,6 +24,7 @@ struct ErrorStateView: View {
                 .padding()
             }
         }
+        .accessibilityIdentifier(AccessibilityIdentifiers.ErrorStateView.view)
     }
 }
 

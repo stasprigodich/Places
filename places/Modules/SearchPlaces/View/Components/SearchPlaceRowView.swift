@@ -17,6 +17,9 @@ struct SearchPlaceRowView: View {
         Button(action: tapAction) {
             Text(location.name)
         }
+        .accessibilityIdentifier(
+            String(format: AccessibilityIdentifiers.SearchPlaces.row, location.id.uuidString)
+        )
         .accessibilityHint(Strings.SearchPlaceRowView.accessibilityHint)
     }
 }

@@ -46,6 +46,7 @@
 		F646423D2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646423C2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift */; };
 		F646423F2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646423E2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift */; };
 		F64642412C83AF460056C7E8 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642402C83AF460056C7E8 /* MockNetworkService.swift */; };
+		F64642472C83C3B30056C7E8 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642462C83C3B30056C7E8 /* AccessibilityIdentifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		F646423C2C83AF0C0056C7E8 /* MockSearchPlacesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPlacesRouter.swift; sourceTree = "<group>"; };
 		F646423E2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPlacesNetworkService.swift; sourceTree = "<group>"; };
 		F64642402C83AF460056C7E8 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		F64642462C83C3B30056C7E8 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				F64642162C80C2010056C7E8 /* Info.plist */,
 				F64642002C8089310056C7E8 /* Components */,
+				F64642452C83C3980056C7E8 /* Constants */,
 				F64642112C80A36D0056C7E8 /* DI */,
 				F64641E32C8067170056C7E8 /* Modules */,
 				F64642082C8090150056C7E8 /* Network */,
@@ -377,6 +380,14 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		F64642452C83C3980056C7E8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F64642462C83C3B30056C7E8 /* AccessibilityIdentifiers.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -509,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64642472C83C3B30056C7E8 /* AccessibilityIdentifiers.swift in Sources */,
 				F64642132C80A3870056C7E8 /* DI.swift in Sources */,
 				F64642072C808F7A0056C7E8 /* SearchPlacesNetworkService.swift in Sources */,
 				F64642222C820D260056C7E8 /* SearchPlacesEmptyView.swift in Sources */,
