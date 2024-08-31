@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct LocationViewModel: Identifiable {
+struct LocationViewModel: Identifiable, Equatable {
     var id = UUID()
     let name: String
     let coordinate: Coordinate
+    
+    static func == (lhs: LocationViewModel, rhs: LocationViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 extension LocationViewModel {

@@ -11,7 +11,7 @@ struct SearchPlacesEmptyView: View {
     var body: some View {
         VStack {
             Spacer()
-            ErrorStateView(message: "No locations found", retryAction: nil)
+            ErrorStateView(message: "No places found", retryAction: nil)
             Spacer()
         }
     }

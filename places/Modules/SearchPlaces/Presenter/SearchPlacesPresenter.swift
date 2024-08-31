@@ -24,10 +24,16 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
 class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     @Published var searchQuery: String = "" {
         didSet {
-            updateFilteredLocations()
+            if !locations.isEmpty {
+                updateFilteredLocations()
+            }
         }
     }
-    @Published private(set) var viewState: ViewState = .loading
+    @Published private(set) var viewState: ViewState = .loading {
+        didSet {
+            accessibilityAnnounceViewState(viewState)
+        }
+    }
     @Published var showWikipediaAppAlert: Bool = false
 
     private var locations: [LocationViewModel] = []
@@ -42,6 +48,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     }
     
     private func updateFilteredLocations() {
+        if case .error = viewState { return }
         filterTask?.cancel()
         filterTask = Task {
             let query = searchQuery.lowercased()
@@ -69,13 +76,14 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     }
 
     func loadLocations() async {
+        accessibilityAnnounceScreenChange()
         viewState = .loading
         do {
             let models = try await interactor.fetchLocations()
             locations = models.map { .init(with: $0) }
             updateFilteredLocations()
         } catch {
-            viewState = .error("Failed to load locations")
+            viewState = .error("Failed to load places")
         }
     }
     
@@ -90,6 +98,25 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
         if !router.routeToWikipedia(with: query) {
             showWikipediaAppAlert = true
         }
+    }
+
+    func accessibilityAnnounceViewState(_ newState: ViewState) {
+        UIAccessibility.post(notification: .layoutChanged, argument: nil)
+
+        switch newState {
+        case .loading:
+            UIAccessibility.post(notification: .announcement, argument: "Loading places.")
+        case .error(_):
+            UIAccessibility.post(notification: .announcement, argument: "Failed to load places.")
+        case .empty:
+            UIAccessibility.post(notification: .announcement, argument: "No places found.")
+        case .results(let locations):
+            UIAccessibility.post(notification: .announcement, argument: "\(locations.count) places found.")
+        }
+    }
+
+    func accessibilityAnnounceScreenChange() {
+        UIAccessibility.post(notification: .screenChanged, argument: nil)
     }
 }
 

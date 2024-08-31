@@ -29,6 +29,6 @@ struct ErrorStateView: View {
 
 struct ErrorStateView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorStateView(message: "Failed to load locations") { }
+        ErrorStateView(message: "Failed to load places") { }
     }
 }

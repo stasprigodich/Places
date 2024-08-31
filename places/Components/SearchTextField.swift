@@ -26,6 +26,10 @@ struct SearchTextField: View {
             .onSubmit {
                 onSubmit(debouncedText)
             }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("Search for places")
+            .accessibilityHint("Double-tap to enter search query")
+            .accessibilityAddTraits(.isSearchField)
     }
     
     private func debounceTextInput(_ newValue: String) {

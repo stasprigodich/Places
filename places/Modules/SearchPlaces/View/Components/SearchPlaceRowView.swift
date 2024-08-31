@@ -15,6 +15,7 @@ struct SearchPlaceRowView: View {
         Button(action: tapAction) {
             Text(location.name)
         }
+        .accessibilityHint("Double-tap to open this place in the Wikipedia app.")
     }
 }
 
