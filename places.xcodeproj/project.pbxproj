@@ -36,6 +36,7 @@
 		F64642202C820C2C0056C7E8 /* SearchPlacesErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646421F2C820C2C0056C7E8 /* SearchPlacesErrorView.swift */; };
 		F64642222C820D260056C7E8 /* SearchPlacesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642212C820D260056C7E8 /* SearchPlacesEmptyView.swift */; };
 		F64642242C820F0C0056C7E8 /* SearchPlaces+ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642232C820F0C0056C7E8 /* SearchPlaces+ViewState.swift */; };
+		F64642272C8325010056C7E8 /* WikipediaAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642262C8325010056C7E8 /* WikipediaAppAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		F646421F2C820C2C0056C7E8 /* SearchPlacesErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesErrorView.swift; sourceTree = "<group>"; };
 		F64642212C820D260056C7E8 /* SearchPlacesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesEmptyView.swift; sourceTree = "<group>"; };
 		F64642232C820F0C0056C7E8 /* SearchPlaces+ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchPlaces+ViewState.swift"; sourceTree = "<group>"; };
+		F64642262C8325010056C7E8 /* WikipediaAppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaAppAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 			children = (
 				F64642032C8089500056C7E8 /* SearchTextField.swift */,
 				F64642192C81C62F0056C7E8 /* ErrorStateView.swift */,
+				F64642262C8325010056C7E8 /* WikipediaAppAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				F64642152C80A3DB0056C7E8 /* SearchPlacesDI.swift in Sources */,
 				F64641F32C8079970056C7E8 /* SearchPlacesInteractor.swift in Sources */,
 				F64641FD2C80821D0056C7E8 /* LocationViewModel.swift in Sources */,
+				F64642272C8325010056C7E8 /* WikipediaAppAlert.swift in Sources */,
 				F646420E2C8092CF0056C7E8 /* LocationDTO.swift in Sources */,
 				F64642202C820C2C0056C7E8 /* SearchPlacesErrorView.swift in Sources */,
 				F64642102C8095B90056C7E8 /* APIConstants.swift in Sources */,

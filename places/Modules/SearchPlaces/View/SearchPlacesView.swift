@@ -13,44 +13,47 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                SearchTextField(text: $presenter.searchQuery) { query in
-                    presenter.openWikipediaApp(with: query)
-                }
-                .padding()
-
-                ZStack {
-                    Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all)
-                    
-                    switch presenter.viewState {
-                    case .loading:
-                        SearchPlacesLoadingView()
-                    case .error(let message):
-                        SearchPlacesErrorView(message: message) {
-                            Task {
-                                await presenter.loadLocations()
-                            }
-                        }
-                    case .empty:
-                        SearchPlacesEmptyView()
-                    case .results(let locations):
-                        SearchPlacesResultView(locations: locations) { coordinate in
-                            presenter.openWikipediaApp(with: coordinate)
-                        }
-                    }
-                }
+                searchField
+                mainContent
             }
             .navigationTitle("Places")
             .background(Color(.secondarySystemGroupedBackground))
             .alert(isPresented: $presenter.showWikipediaAppAlert) {
-                Alert(
-                    title: Text("Error"),
-                    message: Text("Wikipedia app is not installed."),
-                    dismissButton: .default(Text("OK"))
-                )
+                WikipediaAppAlert.build()
             }
             .onAppear {
                 Task {
                     await presenter.loadLocations()
+                }
+            }
+        }
+    }
+    
+    private var searchField: some View {
+        SearchTextField(text: $presenter.searchQuery) { query in
+            presenter.openWikipediaApp(with: query)
+        }
+        .padding()
+    }
+    
+    private var mainContent: some View {
+        ZStack {
+            Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all)
+            
+            switch presenter.viewState {
+            case .loading:
+                SearchPlacesLoadingView()
+            case .error(let message):
+                SearchPlacesErrorView(message: message) {
+                    Task {
+                        await presenter.loadLocations()
+                    }
+                }
+            case .empty:
+                SearchPlacesEmptyView()
+            case .results(let locations):
+                SearchPlacesResultView(locations: locations) { coordinate in
+                    presenter.openWikipediaApp(with: coordinate)
                 }
             }
         }
