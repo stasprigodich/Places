@@ -16,3 +16,9 @@ struct SearchPlacesLoadingView: View {
         }
     }
 }
+
+struct SearchPlacesLoadingView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchPlacesLoadingView()
+    }
+}

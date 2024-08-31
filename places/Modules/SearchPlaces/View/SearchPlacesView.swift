@@ -63,10 +63,22 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
 
 struct SearchPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        let presenter = SearchPlacesPresenter(
-            interactor: DI.searchPlaces.searchPlacesInteractorProtocol,
-            router: DI.searchPlaces.searchPlacesRouterProtocol
-        )
+        let presenter = MockPreviewPresenter()
         return SearchPlacesView(presenter: presenter)
     }
+}
+
+private class MockPreviewPresenter: SearchPlacesPresenterProtocol {
+    var searchQuery: String = ""
+    var viewState: ViewState = .results([
+        .init(
+            name: "Amsterdam",
+            coordinate: .init(latitude: 0, longitude: 0)
+        )
+    ])
+    
+    var showWikipediaAppAlert: Bool = false
+    func loadLocations() async { }
+    func openWikipediaApp(with coordinate: Coordinate) { }
+    func openWikipediaApp(with query: String) { }
 }

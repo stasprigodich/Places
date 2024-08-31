@@ -19,3 +19,9 @@ struct SearchPlacesErrorView: View {
         }
     }
 }
+
+struct SearchPlacesErrorView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchPlacesErrorView(message: "Failed to load places") { }
+    }
+}

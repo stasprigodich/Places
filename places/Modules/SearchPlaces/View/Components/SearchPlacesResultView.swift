@@ -20,3 +20,15 @@ struct SearchPlacesResultView: View {
         }
     }
 }
+
+struct SearchPlacesResultView_Previews: PreviewProvider {
+    static var previews: some View {
+        let locations = [
+            LocationViewModel(
+                name: "Amsterdam",
+                coordinate: .init(latitude: 0, longitude: 0)
+            )
+        ]
+        SearchPlacesResultView(locations: locations) { _ in }
+    }
+}

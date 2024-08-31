@@ -17,3 +17,9 @@ struct SearchPlacesEmptyView: View {
         }
     }
 }
+
+struct SearchPlacesEmptyView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchPlacesEmptyView(message: "No places found")
+    }
+}

@@ -21,7 +21,10 @@ struct SearchPlaceRowView: View {
 
 struct SearchPlaceRowView_Previews: PreviewProvider {
     static var previews: some View {
-        let location = LocationViewModel(name: "Amsterdam", coordinate: .init(latitude: 123, longitude: 123))
+        let location = LocationViewModel(
+            name: "Amsterdam", 
+            coordinate: .init(latitude: 0, longitude: 0)
+        )
         SearchPlaceRowView(location: location) { }
     }
 }
