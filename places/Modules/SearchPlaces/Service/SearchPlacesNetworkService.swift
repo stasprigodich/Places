@@ -7,17 +7,28 @@
 
 import Foundation
 
+// MARK: - Protocol
+
 protocol SearchPlacesNetworkServiceProtocol {
     func fetchLocations() async throws -> [Location]
 }
 
+// MARK: - Implementation
+
 class SearchPlacesNetworkService: SearchPlacesNetworkServiceProtocol {
+    
+    // MARK: - Private Properties
+    
     private let networkService: NetworkServiceProtocol
 
+    // MARK: - Initializer
+    
     init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
 
+    // MARK: - Internal Methods
+    
     func fetchLocations() async throws -> [Location] {
         guard let url = APIConstants.locationsURL else {
             throw NetworkError.invalidURL

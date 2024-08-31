@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchPlaceRowView
+
 struct SearchPlaceRowView: View {
     let location: LocationViewModel
     let tapAction: () -> Void
@@ -18,6 +20,8 @@ struct SearchPlaceRowView: View {
         .accessibilityHint(Strings.SearchPlaceRowView.accessibilityHint)
     }
 }
+
+// MARK: - Preview
 
 struct SearchPlaceRowView_Previews: PreviewProvider {
     static var previews: some View {

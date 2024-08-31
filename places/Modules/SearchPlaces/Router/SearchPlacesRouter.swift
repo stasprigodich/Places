@@ -8,12 +8,18 @@
 import Foundation
 import UIKit
 
+// MARK: - Protocol
+
 protocol SearchPlacesRouterProtocol {
     func routeToWikipedia(with coordinate: Coordinate) -> Bool
     func routeToWikipedia(with query: String) -> Bool
 }
 
+// MARK: - Implementation
+
 class SearchPlacesRouter: SearchPlacesRouterProtocol {
+    
+    // MARK: - Internal Methods
     
     func routeToWikipedia(with coordinate: Coordinate) -> Bool {
         let urlString = "wikipedia://places?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)"

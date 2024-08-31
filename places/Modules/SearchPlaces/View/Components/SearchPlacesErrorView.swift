@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchPlacesErrorView
+
 struct SearchPlacesErrorView: View {
     let message: String
     let retryAction: () -> Void
@@ -19,6 +21,8 @@ struct SearchPlacesErrorView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 struct SearchPlacesErrorView_Previews: PreviewProvider {
     static var previews: some View {

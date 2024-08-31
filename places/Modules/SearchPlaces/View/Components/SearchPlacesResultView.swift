@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchPlacesResultView
+
 struct SearchPlacesResultView: View {
     let locations: [LocationViewModel]
     let onSelectLocation: (Coordinate) -> Void
@@ -20,6 +22,8 @@ struct SearchPlacesResultView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 struct SearchPlacesResultView_Previews: PreviewProvider {
     static var previews: some View {

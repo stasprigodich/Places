@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchPlacesEmptyView
+
 struct SearchPlacesEmptyView: View {
     let message: String
     var body: some View {
@@ -17,6 +19,8 @@ struct SearchPlacesEmptyView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 struct SearchPlacesEmptyView_Previews: PreviewProvider {
     static var previews: some View {

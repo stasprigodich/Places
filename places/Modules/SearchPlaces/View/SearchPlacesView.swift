@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchPlacesView
+
 struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
     @ObservedObject var presenter: T
 
@@ -29,6 +31,8 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
+    
+    // MARK: - Subviews
     
     private var searchField: some View {
         SearchTextField(text: $presenter.searchQuery) { query in
@@ -60,6 +64,8 @@ struct SearchPlacesView<T: SearchPlacesPresenterProtocol>: View {
         }
     }
 }
+
+// MARK: - Preview
 
 struct SearchPlacesView_Previews: PreviewProvider {
     static var previews: some View {

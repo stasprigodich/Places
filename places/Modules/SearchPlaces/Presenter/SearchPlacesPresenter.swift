@@ -7,7 +7,11 @@
 
 import SwiftUI
 
+// MARK: - Typealias
+
 typealias ViewState = SearchPlacesViewState
+
+// MARK: - Protocol
 
 @MainActor
 protocol SearchPlacesPresenterProtocol: ObservableObject {
@@ -20,8 +24,13 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
     func openWikipediaApp(with query: String)
 }
 
+// MARK: - Implementation
+
 @MainActor
 class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
+    
+    // MARK: - Published Properties
+    
     @Published var searchQuery: String = "" {
         didSet {
             if !locations.isEmpty {
@@ -38,16 +47,51 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     }
     @Published var showWikipediaAppAlert: Bool = false
 
+    // MARK: - Private Properties
+    
     private var locations: [LocationViewModel] = []
     private var filterTask: Task<Void, Never>?
-
     private let interactor: SearchPlacesInteractorProtocol
     private let router: SearchPlacesRouterProtocol
 
+    // MARK: - Initializer
+    
     init(interactor: SearchPlacesInteractorProtocol, router: SearchPlacesRouterProtocol) {
         self.interactor = interactor
         self.router = router
     }
+
+    // MARK: - Internal Methods
+    
+    func loadLocations() async {
+        accessibilityAnnounceScreenChange()
+        viewState = .loading
+        let task = Task {
+            do {
+                let models = try await interactor.fetchLocations()
+                locations = models.map { .init(with: $0) }
+                await updateFilteredLocations()
+            } catch {
+                viewState = .error(Strings.SearchPlaces.errorMessage)
+            }
+        }
+        await task.value
+    }
+    
+    func openWikipediaApp(with coordinate: Coordinate) {
+        if !router.routeToWikipedia(with: coordinate) {
+            showWikipediaAppAlert = true
+        }
+    }
+    
+    func openWikipediaApp(with query: String) {
+        guard !query.isEmpty else { return }
+        if !router.routeToWikipedia(with: query) {
+            showWikipediaAppAlert = true
+        }
+    }
+    
+    // MARK: - Private Methods
     
     private func updateFilteredLocations() async {
         if case .error = viewState { return }
@@ -78,35 +122,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
         }
     }
 
-    func loadLocations() async {
-        accessibilityAnnounceScreenChange()
-        viewState = .loading
-        let task = Task {
-            do {
-                let models = try await interactor.fetchLocations()
-                locations = models.map { .init(with: $0) }
-                await updateFilteredLocations()
-            } catch {
-                viewState = .error(Strings.SearchPlaces.errorMessage)
-            }
-        }
-        await task.value
-    }
-    
-    func openWikipediaApp(with coordinate: Coordinate) {
-        if !router.routeToWikipedia(with: coordinate) {
-            showWikipediaAppAlert = true
-        }
-    }
-    
-    func openWikipediaApp(with query: String) {
-        guard !query.isEmpty else { return }
-        if !router.routeToWikipedia(with: query) {
-            showWikipediaAppAlert = true
-        }
-    }
-
-    func accessibilityAnnounceViewState(_ newState: ViewState) {
+    private func accessibilityAnnounceViewState(_ newState: ViewState) {
         UIAccessibility.post(notification: .layoutChanged, argument: nil)
 
         switch newState {
@@ -121,7 +137,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
         }
     }
 
-    func accessibilityAnnounceScreenChange() {
+    private func accessibilityAnnounceScreenChange() {
         UIAccessibility.post(notification: .screenChanged, argument: nil)
     }
 }

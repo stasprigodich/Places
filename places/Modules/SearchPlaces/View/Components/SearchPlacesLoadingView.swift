@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SearchPlacesLoadingView
+
 struct SearchPlacesLoadingView: View {
     var body: some View {
         VStack {
@@ -16,6 +18,8 @@ struct SearchPlacesLoadingView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 struct SearchPlacesLoadingView_Previews: PreviewProvider {
     static var previews: some View {
