@@ -15,7 +15,7 @@ protocol SearchPlacesNetworkServiceProtocol {
 
 // MARK: - Implementation
 
-class SearchPlacesNetworkService: SearchPlacesNetworkServiceProtocol {
+final class SearchPlacesNetworkService: SearchPlacesNetworkServiceProtocol {
     
     // MARK: - Private Properties
     

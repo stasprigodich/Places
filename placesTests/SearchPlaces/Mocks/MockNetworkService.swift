@@ -8,7 +8,7 @@
 @testable import places
 import Foundation
 
-class MockNetworkService: NetworkServiceProtocol {
+final class MockNetworkService: NetworkServiceProtocol {
     var shouldThrowError = false
     var mockData: Data?
 

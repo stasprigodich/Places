@@ -7,12 +7,18 @@
 
 import Foundation
 
+// MARK: - Protocol
+
 protocol NetworkServiceProtocol {
     func performRequest(_ request: NetworkRequest) async throws -> Data
 }
 
-class NetworkService: NetworkServiceProtocol {
+// MARK: - Implementation
 
+final class NetworkService: NetworkServiceProtocol {
+
+    // MARK: - Internal Methods
+    
     func performRequest(_ request: NetworkRequest) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(for: request.urlRequest)
         guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
@@ -22,12 +28,16 @@ class NetworkService: NetworkServiceProtocol {
     }
 }
 
+// MARK: - NetworkError
+
 enum NetworkError: Error {
     case invalidResponse
     case decodingError
     case networkFailure
     case invalidURL
 }
+
+// MARK: - NetworkRequest
 
 struct NetworkRequest {
     let url: URL
@@ -43,6 +53,8 @@ struct NetworkRequest {
         return request
     }
 }
+
+// MARK: - HTTPMethod
 
 enum HTTPMethod: String {
     case get = "GET"

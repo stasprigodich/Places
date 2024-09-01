@@ -8,7 +8,7 @@
 @testable import places
 import Foundation
 
-class MockSearchPlacesInteractor: SearchPlacesInteractorProtocol {
+final class MockSearchPlacesInteractor: SearchPlacesInteractorProtocol {
     var fetchLocationsCalled = false
     var shouldThrowError = false
 

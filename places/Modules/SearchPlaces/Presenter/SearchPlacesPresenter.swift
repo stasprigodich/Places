@@ -27,7 +27,7 @@ protocol SearchPlacesPresenterProtocol: ObservableObject {
 // MARK: - Implementation
 
 @MainActor
-class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
+final class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     
     // MARK: - Published Properties
     

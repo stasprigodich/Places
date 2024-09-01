@@ -15,7 +15,7 @@ protocol SearchPlacesInteractorProtocol {
 
 // MARK: - Implementation
 
-class SearchPlacesInteractor: SearchPlacesInteractorProtocol {
+final class SearchPlacesInteractor: SearchPlacesInteractorProtocol {
 
     // MARK: - Private Properties
     

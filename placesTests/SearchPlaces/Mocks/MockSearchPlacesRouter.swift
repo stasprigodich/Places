@@ -8,7 +8,7 @@
 @testable import places
 import Foundation
 
-class MockSearchPlacesRouter: SearchPlacesRouterProtocol {
+final class MockSearchPlacesRouter: SearchPlacesRouterProtocol {
     var routeToWikipediaCalled = false
     
     func routeToWikipedia(with coordinate: Coordinate) -> Bool {

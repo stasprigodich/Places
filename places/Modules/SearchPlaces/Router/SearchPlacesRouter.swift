@@ -17,7 +17,7 @@ protocol SearchPlacesRouterProtocol {
 
 // MARK: - Implementation
 
-class SearchPlacesRouter: SearchPlacesRouterProtocol {
+final class SearchPlacesRouter: SearchPlacesRouterProtocol {
     
     // MARK: - Internal Methods
     

@@ -8,7 +8,7 @@
 @testable import places
 import Foundation
 
-class MockSearchPlacesNetworkService: SearchPlacesNetworkServiceProtocol {
+final class MockSearchPlacesNetworkService: SearchPlacesNetworkServiceProtocol {
     var shouldThrowError = false
     var mockLocations: [Location] = []
 

@@ -8,14 +8,22 @@
 import Foundation
 import CoreLocation
 
+// MARK: - Protocol
+
 protocol LocationServiceProtocol {
     func getLocationName(latitude: Double, longitude: Double) async -> String?
 }
 
-class LocationService: LocationServiceProtocol {
+// MARK: - Implementation
+
+final class LocationService: LocationServiceProtocol {
     
+    // MARK: - Private Properties
+
     private let geocoder = CLGeocoder()
     
+    // MARK: - Internal Methods
+
     func getLocationName(latitude: Double, longitude: Double) async -> String? {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         
