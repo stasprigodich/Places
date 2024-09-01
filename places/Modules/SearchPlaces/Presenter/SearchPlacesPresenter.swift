@@ -66,16 +66,13 @@ final class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     func loadLocations() async {
         accessibilityAnnounceScreenChange()
         viewState = .loading
-        let task = Task {
-            do {
-                let models = try await interactor.fetchLocations()
-                locations = await mapModelsToViewModels(from: models)
-                await updateFilteredLocations()
-            } catch {
-                viewState = .error(Strings.SearchPlaces.errorMessage)
-            }
+        do {
+            let models = try await interactor.fetchLocations()
+            locations = await mapModelsToViewModels(from: models)
+            await updateFilteredLocations()
+        } catch {
+            viewState = .error(Strings.SearchPlaces.errorMessage)
         }
-        await task.value
     }
     
     func openWikipediaApp(with coordinate: Coordinate) {
