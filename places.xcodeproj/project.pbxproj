@@ -165,7 +165,6 @@
 		F64641B82C8064530056C7E8 /* places */ = {
 			isa = PBXGroup;
 			children = (
-				F646424B2C84E9A90056C7E8 /* Utils */,
 				F64642162C80C2010056C7E8 /* Info.plist */,
 				F64642002C8089310056C7E8 /* Components */,
 				F64642452C83C3980056C7E8 /* Constants */,
@@ -173,6 +172,7 @@
 				F64641E32C8067170056C7E8 /* Modules */,
 				F64642082C8090150056C7E8 /* Network */,
 				F64642282C8353D70056C7E8 /* Resources */,
+				F646424B2C84E9A90056C7E8 /* Utils */,
 				F64641B92C8064530056C7E8 /* placesApp.swift */,
 				F64641BD2C8064540056C7E8 /* Assets.xcassets */,
 				F64641BF2C8064550056C7E8 /* Preview Content */,
