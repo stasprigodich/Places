@@ -69,7 +69,7 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
         let task = Task {
             do {
                 let models = try await interactor.fetchLocations()
-                locations = models.map { .init(with: $0) }
+                locations = await mapModelsToViewModels(from: models)
                 await updateFilteredLocations()
             } catch {
                 viewState = .error(Strings.SearchPlaces.errorMessage)
@@ -92,6 +92,32 @@ class SearchPlacesPresenter: SearchPlacesPresenterProtocol {
     }
     
     // MARK: - Private Methods
+    
+    private func mapModelsToViewModels(from models: [Location]) async -> [LocationViewModel] {
+        await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .userInitiated).async {
+                Task {
+                    var indexedViewModels = [(Int, LocationViewModel)]()
+                    
+                    await withTaskGroup(of: (Int, LocationViewModel).self) { taskGroup in
+                        for (index, model) in models.enumerated() {
+                            taskGroup.addTask {
+                                let viewModel = await LocationViewModel(with: model)
+                                return (index, viewModel)
+                            }
+                        }
+                        for await result in taskGroup {
+                            indexedViewModels.append(result)
+                        }
+                    }
+                    
+                    indexedViewModels.sort(by: { $0.0 < $1.0 })
+                    let viewModels = indexedViewModels.map { $0.1 }
+                    continuation.resume(returning: viewModels)
+                }
+            }
+        }
+    }
     
     private func updateFilteredLocations() async {
         if case .error = viewState { return }

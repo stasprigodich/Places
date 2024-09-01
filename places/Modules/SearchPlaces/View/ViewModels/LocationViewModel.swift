@@ -19,8 +19,14 @@ struct LocationViewModel: Identifiable, Equatable {
 
 extension LocationViewModel {
     
-    init(with location: Location) {
-        name = location.name ?? String(format: Strings.SearchPlaces.defaultPlaceName, location.coordinate.latitude, location.coordinate.longitude)
+    init(with location: Location, locationService: LocationServiceProtocol = DI.location.locationServiceProtocol) async {
+        if let locationName = location.name {
+            name = locationName
+        } else {
+            let coordinate = location.coordinate
+            let locationName = await locationService.getLocationName(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            name = locationName ?? String(format: Strings.SearchPlaces.defaultPlaceName, coordinate.latitude, coordinate.longitude)
+        }
         coordinate = location.coordinate
     }
 }
