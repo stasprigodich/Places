@@ -12,7 +12,6 @@
 		F64641C12C8064550056C7E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F64641C02C8064550056C7E8 /* Preview Assets.xcassets */; };
 		F64641D52C8064550056C7E8 /* placesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641D42C8064550056C7E8 /* placesUITests.swift */; };
 		F64641D72C8064550056C7E8 /* placesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641D62C8064550056C7E8 /* placesUITestsLaunchTests.swift */; };
-		F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641EB2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift */; };
 		F64641EE2C8068820056C7E8 /* SearchPlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641ED2C8068820056C7E8 /* SearchPlacesView.swift */; };
 		F64641F12C80793F0056C7E8 /* SearchPlacesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641F02C80793F0056C7E8 /* SearchPlacesPresenter.swift */; };
 		F64641F32C8079970056C7E8 /* SearchPlacesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64641F22C8079970056C7E8 /* SearchPlacesInteractor.swift */; };
@@ -47,6 +46,7 @@
 		F646423F2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646423E2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift */; };
 		F64642412C83AF460056C7E8 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642402C83AF460056C7E8 /* MockNetworkService.swift */; };
 		F64642472C83C3B30056C7E8 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642462C83C3B30056C7E8 /* AccessibilityIdentifiers.swift */; };
+		F64642492C8472EA0056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64642482C8472EA0056C7E8 /* SearchPlacesModuleBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,6 @@
 		F64641D02C8064550056C7E8 /* placesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = placesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64641D42C8064550056C7E8 /* placesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesUITests.swift; sourceTree = "<group>"; };
 		F64641D62C8064550056C7E8 /* placesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F64641EB2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesModuleBuilder.swift; sourceTree = SOURCE_ROOT; };
 		F64641ED2C8068820056C7E8 /* SearchPlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesView.swift; sourceTree = "<group>"; };
 		F64641F02C80793F0056C7E8 /* SearchPlacesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesPresenter.swift; sourceTree = "<group>"; };
 		F64641F22C8079970056C7E8 /* SearchPlacesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesInteractor.swift; sourceTree = "<group>"; };
@@ -111,6 +110,7 @@
 		F646423E2C83AF290056C7E8 /* MockSearchPlacesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPlacesNetworkService.swift; sourceTree = "<group>"; };
 		F64642402C83AF460056C7E8 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		F64642462C83C3B30056C7E8 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
+		F64642482C8472EA0056C7E8 /* SearchPlacesModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlacesModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,7 +268,7 @@
 		F64641EA2C8067E70056C7E8 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				F64641EB2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift */,
+				F64642482C8472EA0056C7E8 /* SearchPlacesModuleBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -525,6 +525,7 @@
 				F64642072C808F7A0056C7E8 /* SearchPlacesNetworkService.swift in Sources */,
 				F64642222C820D260056C7E8 /* SearchPlacesEmptyView.swift in Sources */,
 				F646421E2C820BDE0056C7E8 /* SearchPlacesLoadingView.swift in Sources */,
+				F64642492C8472EA0056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */,
 				F64641F52C8079CD0056C7E8 /* SearchPlacesRouter.swift in Sources */,
 				F64642042C8089500056C7E8 /* SearchTextField.swift in Sources */,
 				F64641F12C80793F0056C7E8 /* SearchPlacesPresenter.swift in Sources */,
@@ -544,7 +545,6 @@
 				F64642102C8095B90056C7E8 /* APIConstants.swift in Sources */,
 				F64642242C820F0C0056C7E8 /* SearchPlaces+ViewState.swift in Sources */,
 				F646422F2C8359E70056C7E8 /* LocalizedStrings.swift in Sources */,
-				F64641EC2C8068290056C7E8 /* SearchPlacesModuleBuilder.swift in Sources */,
 				F646420A2C8090210056C7E8 /* NetworkService.swift in Sources */,
 				F64641FF2C80865E0056C7E8 /* Coordinate.swift in Sources */,
 			);
