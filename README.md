@@ -1,9 +1,9 @@
 # Places
 
 ## Screenshots
-![first-screen](https://github.com/user-attachments/assets/2f694c0d-c728-41d6-85bb-a18a74bbcc07)
-![second-screen](https://github.com/user-attachments/assets/dbd24dad-5e94-4a6a-ac95-ef27b3b69ef6)
-![third-screen](https://github.com/user-attachments/assets/ffc1e9d8-d5c0-4ad0-ad9c-948d4a6f56fb)
+![first-screen](https://github.com/user-attachments/assets/d575d57e-e2f2-43a1-b440-5714d5d30b0f)
+![second-screen](https://github.com/user-attachments/assets/75aa857c-a7d1-4529-98a8-336444d9f14b)
+![third-screen](https://github.com/user-attachments/assets/c4d36391-ca24-42ff-b2ba-5612719a131f)
 
 
 ## Overview
